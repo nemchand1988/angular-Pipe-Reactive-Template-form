@@ -1,0 +1,9 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form)" *ngIf="isSubmitted">
+  <label for="name"></label>
+  <input type="text" id="name" name="name" ngModel />
+
+  <label for="roll"></label>
+  <input type="text" id="roll" name="roll" ngModel />
+
+  <button type="submit">Submit temp D Form</button>
+</form>

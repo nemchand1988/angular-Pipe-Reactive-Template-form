@@ -1,0 +1,46 @@
+<hello name="{{ name }}"></hello>
+<p>Start editing to see some magic happen :)</p>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="name" />
+  <input type="text" formControlName="roll" />
+
+  <div formGroupName="contacts">
+    <input type="text" formControlName="phone" />
+    <input type="text" formControlName="mobile" />
+  </div>
+
+  <div formArrayName="subjects">
+    <ul *ngFor="let subject of subjects; let i = index">
+      <li>
+        <input type="text" [formControl]="f.subjects.controls[i]" />
+      </li>
+    </ul>
+
+    <a href="#" onclick="return false;" (click)="add()">Add</a>
+  </div>
+
+  <div formArrayName="marks">
+    <ul *ngFor="let mark of marks; let i = index">
+      <li [formGroup]="f.marks.controls[i]">
+        <input type="text" formControlName="math" />
+        <input type="text" formControlName="science" />
+      </li>
+    </ul>
+
+    <a href="#" onclick="return false;" (click)="addm()">marks Add</a>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
+<hr style="height:5px;color:red;background:red;" />
+<div style="border:1px solid black; margin-top:20px;">
+  <template-driven
+    [isSubmitted]="isSubmitted"
+    (tmformSubmitted)="tmformSubmitted($event)"
+  ></template-driven>
+</div>
+
+<div>
+  {{ updatedValue | changecase }}
+</div>
