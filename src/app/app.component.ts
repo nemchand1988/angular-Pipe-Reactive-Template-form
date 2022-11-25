@@ -11,6 +11,7 @@ export class AppComponent {
   form: FormGroup;
   isSubmitted: boolean = false;
   updatedValue: any;
+  count: number = 1;
 
   constructor(public fb: FormBuilder) {}
 
@@ -72,5 +73,9 @@ export class AppComponent {
 
   tmformSubmitted(ev) {
     console.log(ev);
+  }
+
+  countupdate(ev){
+    this.count = ev
   }
 }
