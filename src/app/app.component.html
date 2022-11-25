@@ -1,4 +1,7 @@
-<div increment-counter [value]="count" (updated)="countupdate($event)"
+<div
+  increment-counter
+  [value]="count"
+  (updated)="countupdate($event)"
   style="padding:5px;background:blue;color:white;text-weight:bold;width:20px; text-align:center"
 >
   {{ count }}
@@ -50,3 +53,5 @@
 <div>
   {{ updatedValue | changecase }}
 </div>
+
+<a href="#" onclick="return false" (click)="createSubject()">Subject</a>

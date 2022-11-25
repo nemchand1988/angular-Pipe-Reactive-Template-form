@@ -7,6 +7,7 @@ import { HelloComponent } from './hello.component';
 import { TemplateDrivenForm } from './template-driven-form/template-driven-form';
 import { Changecase } from './pipe/changecase.pipe';
 import { IncrementCounter } from './directives/counter.directive';
+import { Testservice } from './services/test.service';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, ReactiveFormsModule],
@@ -17,6 +18,7 @@ import { IncrementCounter } from './directives/counter.directive';
     Changecase,
     IncrementCounter,
   ],
+  providers: [Testservice],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

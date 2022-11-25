@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { from, of, Subject } from 'rxjs';
+import { Testservice } from './services/test.service';
 
 @Component({
   selector: 'my-app',
@@ -13,7 +15,7 @@ export class AppComponent {
   updatedValue: any;
   count: number = 1;
 
-  constructor(public fb: FormBuilder) {}
+  constructor(public fb: FormBuilder, public testservice: Testservice) {}
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -75,7 +77,27 @@ export class AppComponent {
     console.log(ev);
   }
 
-  countupdate(ev){
-    this.count = ev
+  countupdate(ev) {
+    this.count = ev;
+  }
+
+  ngAfterViewInit() {
+    let list = this.testservice.getlist();
+    of(list).subscribe((value) => {
+      console.log(value);
+    });
+
+    // const source = of(1, 2, 3, 4, 5);
+    // //output: 1,2,3,4,5
+    // const subscribe = source.subscribe(val => console.log(val));
+
+    //     //emit result of promise
+    // const promiseSource = from(new Promise(resolve => resolve('Hello World!')));
+    // //output: 'Hello World'
+    // const subscribe = promiseSource.subscribe(val => console.log(val));
+  }
+
+  createSubject() {
+    this.testservice.post('next')
   }
 }
